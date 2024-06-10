@@ -6,7 +6,9 @@ import {
 
 import HomePage from "./pages/HomePage.jsx";
 import EditDetailPage from "./pages/EditDetailPage.jsx";
-import EventDetailPage from "./pages/EventDetailPage.jsx";
+import EventDetailPage, {
+  loader as eventDetailLoader,
+} from "./pages/EventDetailPage.jsx";
 import NewEventPage from "./pages/NewEventPage.jsx";
 import RootLayout from "./pages/RootLayout.jsx";
 import EventsPage, { loader as eventsLoader } from "./pages/EventsPage.jsx";
@@ -19,7 +21,11 @@ export const router = createBrowserRouter(
       <Route index element={<HomePage />} />
       <Route path="events" element={<EventsRootLayout />}>
         <Route index path="" element={<EventsPage />} loader={eventsLoader} />
-        <Route path=":eventId" element={<EventDetailPage />} />
+        <Route
+          path=":eventId"
+          element={<EventDetailPage />}
+          loader={eventDetailLoader}
+        />
         <Route path="new" element={<NewEventPage />} />
         <Route path=":eventId/edit" element={<EditDetailPage />} />
       </Route>
